@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {Route, Switch} from 'react-router';
 import './App.css';
 
 class App extends Component {
@@ -19,8 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Spotify</h1>
         </header>
         <div>
           <button
@@ -28,14 +27,20 @@ class App extends Component {
               Add an Item
           </button>
         </div>
-        <div className="App-intro">
-          {items.map((item)=>(
-            <div className="item">
-              {item}
+        <Switch>
+        <Route path="/spotify"
+          render={()=>(
+            <div className="items">
+              {items.map((item)=>(
+                <div className="item">
+                  {item}
+                </div>
+                )
+              )}
             </div>
-            )
-          )}
-        </div>
+            )}
+          />
+        </Switch>
       </div>
     );
   }
