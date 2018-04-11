@@ -16,7 +16,7 @@ app.listen(8080, ()=>{
     console.log('listening on port 8080')
 })
 
-app.get('/spotify', (req, res)=>{
+app.get('/auth', (req, res)=>{
   axios.get(`https://accounts.spotify.com/authorize/?client_id=${process.env.CLIENT_ID}&response_type=code&redirect_uri=http%3A%2F%2Flocalhost:3000%2Fspotify`)
     .then(response =>{
       console.log('promise')
