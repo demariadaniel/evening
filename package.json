@@ -2,11 +2,13 @@
   "name": "flexbox",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "query-string": "^6.0.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-router": "^4.2.0",

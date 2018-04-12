@@ -44,7 +44,7 @@ class _App extends Component {
           }
         <Switch>
         <Route path="/spotify"
-          render={(props)=> <Items {...props} items={items} />}
+          render={(props)=> <Items {...props} add={this.add} items={items} />}
           />
         </Switch>
       </div>

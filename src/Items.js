@@ -4,9 +4,7 @@ import queryString from 'query-string';
 
 class Items extends Component {
   componentDidMount(){
-    // console.log(this.props)
-    console.log(queryString.parse(this.props.location.search))
-    // axios.post('http://localhost:8080/auth', {})
+    axios.post('http://localhost:8080/auth', queryString.parse(this.props.location.search))
   }
   render(){
     const {items} = this.props;
@@ -14,7 +12,7 @@ class Items extends Component {
       <div>
         <button
           className="button button-primary"
-          onClick={this.add}>
+          onClick={this.props.add}>
             Add an Item
         </button>
         <div className="items">
