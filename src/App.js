@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Items from './Items';
 import {withRouter} from 'react-router';
 import {Link, Route, Switch} from 'react-router-dom';
 import './App.css';
@@ -18,10 +19,7 @@ class _App extends Component {
   componentDidMount(){
     axios.get('http://localhost:8080/auth')
       .then(res =>{
-        console.log(res.data)
-        if (res.data.loggedIn) {
-          this.props.history.push('/spotify')
-        } else {
+        if (!res.data.loggedIn) {
           localStorage.auth = res.data;
           window.location = `https://accounts.spotify.com/authorize/?client_id=${res.data.id}&response_type=code&redirect_uri=http://localhost:3000/spotify`
         }
@@ -46,23 +44,7 @@ class _App extends Component {
           }
         <Switch>
         <Route path="/spotify"
-          render={()=>(
-            <div>
-              <button
-                className="button button-primary"
-                onClick={this.add}>
-                  Add an Item
-              </button>
-              <div className="items">
-                {items.map((item)=>(
-                  <div className="item">
-                    {item}
-                  </div>
-                  )
-                )}
-              </div>
-            </div>
-            )}
+          render={(props)=> <Items {...props} items={items} />}
           />
         </Switch>
       </div>
